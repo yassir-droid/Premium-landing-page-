@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NovaX - Premium Digital Solutions</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Premium Stylesheet Link -->
+  <link rel="stylesheet" href="sty.css">
+</head>
+
+<body class="theme-developer">
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">NovaX</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#">Solutions</a></li>
+      <li><a href="#">Pricing</a></li>
+    </ul>
+    <a href="#signupForm" class="nav-btn">Get Started</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+
+    <div class="hero-text">
+      <h1>
+        Build The Future With
+        <span>Modern Tech</span>
+      </h1>
+
+      <p>
+        Powerful digital solutions for startups, businesses,
+        and creators. Launch faster with a premium modern platform
+        designed for performance, tailored exactly to your profession.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#signupForm" class="btn-primary">Start Free</a>
+        <a href="#features" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Interactive Premium Signup Card -->
+    <div class="hero-card">
+      <div class="signup-container">
+        <h3>Join the Community</h3>
+        <p class="signup-subtitle">Enter your details and select your profession to customize your experience.</p>
+
+        <form id="signupForm" class="signup-form">
+          <div class="input-group">
+            <input type="text" id="userName" required placeholder=" " class="form-input">
+            <label for="userName" class="form-label">Full Name</label>
+          </div>
+
+          <div class="input-group">
+            <input type="email" id="userEmail" required placeholder=" " class="form-input">
+            <label for="userEmail" class="form-label">Email Address</label>
+          </div>
+
+          <div class="profession-section">
+            <label class="section-label">I am a...</label>
+            <div class="profession-grid">
+              
+              <div class="prof-card active" data-profession="developer">
+                <span class="prof-icon">💻</span>
+                <span class="prof-name">Developer</span>
+              </div>
+
+              <div class="prof-card" data-profession="designer">
+                <span class="prof-icon">🎨</span>
+                <span class="prof-name">Designer</span>
+              </div>
+
+              <div class="prof-card" data-profession="creator">
+                <span class="prof-icon">✨</span>
+                <span class="prof-name">Creator</span>
+              </div>
+
+              <div class="prof-card" data-profession="business">
+                <span class="prof-icon">💼</span>
+                <span class="prof-name">Business</span>
+              </div>
+
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <span>Get Started</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+
+        <div id="successMessage" class="success-message">
+          <div class="success-icon">🎉</div>
+          <h4>Welcome, <span id="display-name">User</span>!</h4>
+          <p>Your workspace is being configured as a <span id="display-prof" class="prof-badge">Developer</span>. A confirmation has been sent to <strong id="display-email">email</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <h2 class="section-title">Premium Features</h2>
+    <p class="section-subtitle">
+      Everything you need to build, scale, and grow your
+      business with modern cloud infrastructure and AI-powered tools.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h3>Fast Performance</h3>
+        <p>
+          Optimized architecture delivering lightning-fast speed
+          and smooth experiences across devices.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>Secure Platform</h3>
+        <p>
+          Enterprise-grade security with encrypted data
+          protection and secure cloud hosting.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🤖</div>
+        <h3>AI Automation</h3>
+        <p>
+          Automate workflows and improve productivity using
+          intelligent AI-driven solutions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <h2>Ready To Launch?</h2>
+    <p>
+      Join thousands of professionals using NovaX to create
+      stunning digital experiences and scale globally.
+    </p>
+    <a href="#signupForm" class="btn-primary">Create Account</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 NovaX. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Interactivity Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const profCards = document.querySelectorAll('.prof-card');
+      const signupForm = document.getElementById('signupForm');
+      const successMessage = document.getElementById('successMessage');
+      const displayName = document.getElementById('display-name');
+      const displayProf = document.getElementById('display-prof');
+      const displayEmail = document.getElementById('display-email');
+      
+      let selectedProfession = 'developer'; // default
+      
+      // Profession selection click handlers
+      profCards.forEach(card => {
+        card.addEventListener('click', () => {
+          // Remove active class from all profession options
+          profCards.forEach(c => c.classList.remove('active'));
+          
+          // Add active class to selected option
+          card.classList.add('active');
+          
+          // Set selection
+          selectedProfession = card.getAttribute('data-profession');
+          
+          // Set body class to update global accent styles
+          document.body.className = `theme-${selectedProfession}`;
+        });
+      });
+      
+      // Form submission handler
+      signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const nameVal = document.getElementById('userName').value.trim();
+        const emailVal = document.getElementById('userEmail').value.trim();
+        
+        if (!nameVal || !emailVal) return;
+        
+        // Inject values into confirmation block
+        displayName.textContent = nameVal;
+        displayEmail.textContent = emailVal;
+        
+        // Capitalize profession text
+        const capProf = selectedProfession.charAt(0).toUpperCase() + selectedProfession.slice(1);
+        displayProf.textContent = capProf;
+        
+        // Hide form inputs and subtitle
+        document.querySelector('.signup-container h3').style.display = 'none';
+        document.querySelector('.signup-subtitle').style.display = 'none';
+        signupForm.style.display = 'none';
+        
+        // Show success screen
+        successMessage.style.display = 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>
